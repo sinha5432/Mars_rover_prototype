@@ -1,6 +1,10 @@
 import numpy as np
 import cv2
-
+#################### DATASET #######################################################
+"""
+https://s3.eu-central-1.amazonaws.com/avg-kitti/data_odometry_poses.zip  ......for poses file
+https://s3.eu-central-1.amazonaws.com/avg-kitti/data_odometry_gray.zip .......for dataset (22 GB)
+"""
 STAGE_FIRST_FRAME = 0
 STAGE_SECOND_FRAME = 1
 STAGE_DEFAULT_FRAME = 2
