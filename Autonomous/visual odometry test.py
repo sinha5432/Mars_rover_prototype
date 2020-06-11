@@ -1,19 +1,24 @@
 import numpy as np
 import cv2
 
-from opencv1 import PinholeCamera, VisualOdometry
+from Visual Odometry import PinholeCamera, VisualOdometry
 
+#################### DATASET DOWNLOAD #######################################################
+"""
+https://s3.eu-central-1.amazonaws.com/avg-kitti/data_odometry_poses.zip  ......for poses file
+https://s3.eu-central-1.amazonaws.com/avg-kitti/data_odometry_gray.zip .......for dataset (22 GB)
+"""
 
 cam = PinholeCamera(1241.0, 376.0, 718.8560, 718.8560, 607.1928, 185.2157)
 vo = VisualOdometry(cam,"D:/odometry/data_odometry_poses/dataset/poses/00.txt")
-#aa command su kre?..kon?VisualOdometry
+
 
 traj = np.zeros((600,600,3), dtype=np.uint8)
 
-for img_id in range(4541):#max no of ima<es
+for img_id in range(4541):
 	img = cv2.imread("D:/odometry/data_odometry_gray (3)/dataset/sequences/00/image_0/"+str(img_id).zfill(6)+'.png', 0)
 	#print (img.shape)
-	vo.update(img, img_id)#upar nu count kare ce...1..2...3...5..4..5..aato py 2.7 ne 3.7 ma convert karyo..and pat> ma vand>o >tooook
+	vo.update(img, img_id)
 
 	cur_t = vo.cur_t
 	if(img_id > 2):
